@@ -9,14 +9,14 @@ class DrawPanel extends JPanel {
     int fontSize = 12;
     String direction = "W";
     String street = "Market St";
-    Handler handler = new Handler();
+    Handler handler;
 
     Image turnLeftImage, speedLimitImageOne, speedLimitImageTwo, trafficAheadImage,
             lowTirePressureImage, compassImage, streetNameImage;
 
-    public DrawPanel(Handler handler){
+    public DrawPanel(){
         try {
-            this.handler = handler;
+            this.handler = new Handler();
             String baseDirectory = "images/";
             turnLeftImage = ImageIO.read(getClass().getResource(baseDirectory + "turnRight.png"));
             speedLimitImageOne = ImageIO.read(getClass().getResource(baseDirectory + "firstSpeedLimitSign.png"));
@@ -34,25 +34,23 @@ class DrawPanel extends JPanel {
         return handler;
     }
 
-    public void setHandler(Handler handler) {
-        this.handler = handler;
-    }
-
     public void paintComponent(Graphics g) {
 //        g.setColor(Color.red);
 //        g.drawString(street, 300, 600);
 
-        System.out.println(handler.isDisplayTurnRight());
         if (handler.isDisplayTurnRight()) {
-            g.setColor(Color.red);
-            g.drawString("True", 300, 600);
-//            int width = turnLeftImage.getWidth(null);
-//            int height = turnLeftImage.getHeight(null);
-//            g.drawImage(turnLeftImage, 400, 400, width, height, null);
-        } else {
-            g.setColor(Color.red);
-            g.drawString("False", 300, 600);
+//            g.setColor(Color.red);
+//            g.drawString("Display Turn Right: True", 300, 600);
+            g.drawImage(turnLeftImage, 400, 400, turnLeftImage.getWidth(null), turnLeftImage.getHeight(null), null);
         }
+
+        if (handler.isShowSpeed()) {
+            g.drawImage(speedLimitImageOne, 400, 400, speedLimitImageOne.getWidth(null), speedLimitImageOne.getHeight(null), null);
+//            g.setColor(Color.red);
+//            g.drawString("Show Speed: True", 200, 400);
+        }
+
+
 //        if (handler.isShowSpeed()) {
 //            g.setColor(Color.white);
 //            g.drawString(String.valueOf(100), 300, 600);

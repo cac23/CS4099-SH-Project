@@ -12,35 +12,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.*;
 import java.util.Timer;
+import java.util.TimerTask;
 
 final public class Test {
-    JFrame frame;
-    DrawPanel drawPanel;
-
-
-
     public static void main(String[] args) {
-
-
-
-
-
-        //Test newTest = new Test();
-        //DrawPanel drawPanel = new DrawPanel(this);
         Test newTest = new Test();
         newTest.go();
     }
 
-
     private void go() {
-        frame = new JFrame("Test");
+        JFrame frame = new JFrame("Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setUndecorated(true);
         frame.setBackground(new Color(0, 0, 0, 0));
 
-        Handler handler = new Handler();
-        drawPanel = new DrawPanel(handler);
+        DrawPanel drawPanel = new DrawPanel();
         drawPanel.setBackground(new Color(0, 0, 0, 0));
 
         frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
@@ -50,27 +37,35 @@ final public class Test {
         frame.setVisible(true);
 
 
-        int timer = 5000;
-        long time = System.currentTimeMillis();
+        try {
+            // So that printing and display can synchronise
+            Thread.sleep(3000);
 
+            // Turn right true -> false in 5 seconds
+            drawPanel.getHandler().setDisplayTurnRight(true);
+            drawPanel.repaint();
+            System.out.println("Display Turn Right True");
+            Thread.sleep(5000);
+            System.out.println("Display Turn Right False");
+            drawPanel.getHandler().setDisplayTurnRight(false);
+            drawPanel.repaint();
 
-        handler.setDisplayTurnRight(true);
+            System.out.println("Taking a break for 3 seconds");
+            Thread.sleep(3000);
+            System.out.println("Finished taking a break for 3 seconds");
 
+            // Show speed true -> false in 5 seconds
+            drawPanel.getHandler().setShowSpeed(true);
+            drawPanel.repaint();
+            System.out.println("Show Speed True");
+            Thread.sleep(5000);
+            System.out.println("Show Speed False");
+            drawPanel.getHandler().setShowSpeed(false);
+            drawPanel.repaint();
 
-        drawPanel.setHandler(handler);
-//        System.out.println("H: " + drawPanel.getHandler().isDisplayTurnRight());
-//        drawPanel.repaint();
-//        System.out.println("REPAINTED");
-
-        while(System.currentTimeMillis() < time + timer) {
-            if(System.currentTimeMillis() % 2000 == 0) {
-                System.out.println("Waiting for timer");
-            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.out.println("should change time npw");
-        handler.setDisplayTurnRight(false);
-        drawPanel.setHandler(handler);
-        drawPanel.repaint();
     }
 }
 
