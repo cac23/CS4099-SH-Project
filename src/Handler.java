@@ -9,93 +9,104 @@ public class Handler {
     boolean displayCurrentDirection;
     boolean displayTurnRight; 
     boolean displayTurnLeft ;
-    boolean showSpeed ;
+    boolean showSpeed;
 
-    public boolean isDisplayRightNavigation() {
-        return displayRightNavigation;
-    }
+
+    /* Mutator methods */
 
     public void setDisplayRightNavigation(boolean displayRightNavigation) {
         this.displayRightNavigation = displayRightNavigation;
-    }
-
-    public boolean isDisplayContinueAheadNavigation() {
-        return displayContinueAheadNavigation;
     }
 
     public void setDisplayContinueAheadNavigation(boolean displayContinueAheadNavigation) {
         this.displayContinueAheadNavigation = displayContinueAheadNavigation;
     }
 
-    public boolean isDisplayCurrentStreet() {
-        return displayCurrentStreet;
-    }
-
     public void setDisplayCurrentStreet(boolean displayCurrentStreet) {
         this.displayCurrentStreet = displayCurrentStreet;
-    }
-
-    public boolean isDisplayFirstSpeedLimit() {
-        return displayFirstSpeedLimit;
     }
 
     public void setDisplayFirstSpeedLimit(boolean displayFirstSpeedLimit) {
         this.displayFirstSpeedLimit = displayFirstSpeedLimit;
     }
 
-    public boolean isDisplaySecondSpeedLimit() {
-        return displaySecondSpeedLimit;
-    }
-
     public void setDisplaySecondSpeedLimit(boolean displaySecondSpeedLimit) {
         this.displaySecondSpeedLimit = displaySecondSpeedLimit;
-    }
-
-    public boolean isDisplayFirstWarning() {
-        return displayFirstWarning;
     }
 
     public void setDisplayFirstWarning(boolean displayFirstWarning) {
         this.displayFirstWarning = displayFirstWarning;
     }
 
-    public boolean isDisplaySecondWarning() {
-        return displaySecondWarning;
-    }
 
     public void setDisplaySecondWarning(boolean displaySecondWarning) {
         this.displaySecondWarning = displaySecondWarning;
-    }
-
-    public boolean isDisplayCurrentDirection() {
-        return displayCurrentDirection;
     }
 
     public void setDisplayCurrentDirection(boolean displayCurrentDirection) {
         this.displayCurrentDirection = displayCurrentDirection;
     }
 
-    public boolean isDisplayTurnRight() {
-        return displayTurnRight;
-    }
-
     public void setDisplayTurnRight(boolean displayTurnRight) {
         this.displayTurnRight = displayTurnRight;
+    }
+
+
+    public void setDisplayTurnLeft(boolean displayTurnLeft) {
+        this.displayTurnLeft = displayTurnLeft;
+    }
+
+
+    public void setShowSpeed(boolean showSpeed) {
+        this.showSpeed = showSpeed;
+    }
+
+
+    /* Accessor methods */
+
+    public boolean isDisplayRightNavigation() {
+        return displayRightNavigation;
+    }
+
+    public boolean isDisplayContinueAheadNavigation() {
+        return displayContinueAheadNavigation;
+    }
+
+    public boolean isDisplayCurrentStreet() {
+        return displayCurrentStreet;
+    }
+
+    public boolean isDisplayFirstSpeedLimit() {
+        return displayFirstSpeedLimit;
+    }
+
+    public boolean isDisplaySecondSpeedLimit() {
+        return displaySecondSpeedLimit;
+    }
+
+    public boolean isDisplayFirstWarning() {
+        return displayFirstWarning;
+    }
+
+    public boolean isDisplaySecondWarning() {
+        return displaySecondWarning;
+    }
+
+    public boolean isDisplayTurnRight() {
+        return displayTurnRight;
     }
 
     public boolean isDisplayTurnLeft() {
         return displayTurnLeft;
     }
 
-    public void setDisplayTurnLeft(boolean displayTurnLeft) {
-        this.displayTurnLeft = displayTurnLeft;
-    }
-
     public boolean isShowSpeed() {
         return showSpeed;
     }
 
-    public void setShowSpeed(boolean showSpeed) {
-        this.showSpeed = showSpeed;
+    public boolean isDisplayCurrentDirection() {
+        return displayCurrentDirection;
     }
+
+
 }

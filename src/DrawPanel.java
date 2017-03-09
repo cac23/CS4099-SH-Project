@@ -3,10 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-
-class DrawPanel extends JPanel {
-    private static final long serialVersionUID = 1L;
-    int fontSize = 12;
+public class DrawPanel extends JPanel {
     String direction = "W";
     String street = "Market St";
     Handler handler;
@@ -30,14 +27,8 @@ class DrawPanel extends JPanel {
         }
     }
 
-    public Handler getHandler() {
-        return handler;
-    }
 
     public void paintComponent(Graphics g) {
-//        g.setColor(Color.red);
-//        g.drawString(street, 300, 600);
-
         if (handler.isDisplayTurnRight()) {
 //            g.setColor(Color.red);
 //            g.drawString("Display Turn Right: True", 300, 600);
@@ -54,7 +45,7 @@ class DrawPanel extends JPanel {
 //        if (handler.isShowSpeed()) {
 //            g.setColor(Color.white);
 //            g.drawString(String.valueOf(100), 300, 600);
-//            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
+            g.setFont(new Font("TimesRoman", Font.PLAIN, Constants.FONT_SIZE));
 //        }
 //        if (handler.isDisplayFirstSpeedLimit()) {
 //            int width = speedLimitImageOne.getWidth(null);
@@ -77,14 +68,10 @@ class DrawPanel extends JPanel {
 //            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
 //        }
     }
+
+
+    public Handler getHandler() {
+        return handler;
+    }
+
 }
-        /*private void moveIt() {
-            while (true) {
-                try {
-                    Thread.sleep(10);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                frame.repaint();
-            }
-        } */
