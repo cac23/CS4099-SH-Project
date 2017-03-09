@@ -14,8 +14,9 @@ class DrawPanel extends JPanel {
     Image turnLeftImage, speedLimitImageOne, speedLimitImageTwo, trafficAheadImage,
             lowTirePressureImage, compassImage, streetNameImage;
 
-    public DrawPanel(){
+    public DrawPanel(Handler handler){
         try {
+            this.handler = handler;
             String baseDirectory = "images/";
             turnLeftImage = ImageIO.read(getClass().getResource(baseDirectory + "turnRight.png"));
             speedLimitImageOne = ImageIO.read(getClass().getResource(baseDirectory + "firstSpeedLimitSign.png"));
@@ -29,40 +30,54 @@ class DrawPanel extends JPanel {
         }
     }
 
-    public void paintComponent(Graphics g) {
-        g.setColor(Color.red);
-        g.drawString(street, 300, 600);
+    public Handler getHandler() {
+        return handler;
+    }
 
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public void paintComponent(Graphics g) {
+//        g.setColor(Color.red);
+//        g.drawString(street, 300, 600);
+
+        System.out.println(handler.isDisplayTurnRight());
         if (handler.isDisplayTurnRight()) {
-            int width = turnLeftImage.getWidth(null);
-            int height = turnLeftImage.getHeight(null);
-            g.drawImage(turnLeftImage, 400, 400, width, height, null);
+            g.setColor(Color.red);
+            g.drawString("True", 300, 600);
+//            int width = turnLeftImage.getWidth(null);
+//            int height = turnLeftImage.getHeight(null);
+//            g.drawImage(turnLeftImage, 400, 400, width, height, null);
+        } else {
+            g.setColor(Color.red);
+            g.drawString("False", 300, 600);
         }
-        if (handler.isShowSpeed()) {
-            g.setColor(Color.white);
-            g.drawString(String.valueOf(100), 300, 600);
-            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
-        }
-        if (handler.isDisplayFirstSpeedLimit()) {
-            int width = speedLimitImageOne.getWidth(null);
-            int height = speedLimitImageOne.getHeight(null);
-            g.drawImage(speedLimitImageOne, 400, 400, width, height, null);
-        }
-        if (handler.isDisplaySecondSpeedLimit()) {
-            int width = speedLimitImageTwo.getWidth(null);
-            int height = speedLimitImageTwo.getHeight(null);
-            g.drawImage(speedLimitImageTwo, 400, 400, width, height, null);
-        }
-        if (handler.isDisplayCurrentDirection()) {
-            g.setColor(Color.white);
-            g.drawString(direction, 300, 600);
-            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
-        }
-        if (handler.isDisplayCurrentStreet()) {
-            g.setColor(Color.white);
-            g.drawString(street, 300, 600);
-            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
-        }
+//        if (handler.isShowSpeed()) {
+//            g.setColor(Color.white);
+//            g.drawString(String.valueOf(100), 300, 600);
+//            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
+//        }
+//        if (handler.isDisplayFirstSpeedLimit()) {
+//            int width = speedLimitImageOne.getWidth(null);
+//            int height = speedLimitImageOne.getHeight(null);
+//            g.drawImage(speedLimitImageOne, 400, 400, width, height, null);
+//        }
+//        if (handler.isDisplaySecondSpeedLimit()) {
+//            int width = speedLimitImageTwo.getWidth(null);
+//            int height = speedLimitImageTwo.getHeight(null);
+//            g.drawImage(speedLimitImageTwo, 400, 400, width, height, null);
+//        }
+//        if (handler.isDisplayCurrentDirection()) {
+//            g.setColor(Color.white);
+//            g.drawString(direction, 300, 600);
+//            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
+//        }
+//        if (handler.isDisplayCurrentStreet()) {
+//            g.setColor(Color.white);
+//            g.drawString(street, 300, 600);
+//            g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
+//        }
     }
 }
         /*private void moveIt() {

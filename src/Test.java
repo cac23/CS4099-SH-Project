@@ -18,30 +18,17 @@ final public class Test {
     DrawPanel drawPanel;
 
 
-    public static void main(String... args) {
 
-//        long current_time1 = System.currentTimeMillis();
-//
-//
-//        if (System.currentTimeMillis() > current_time1 + 3000) //3 seconds is 3000 millis
-////            displayTurnRight = false;
-//
-//        long current_time2 = System.currentTimeMillis();
-//        boolean displayFirstSpeedLimit = true;
-//        if (System.currentTimeMillis() > current_time2 + 6000) //6 seconds it 6000 millis
-//            displayFirstSpeedLimit = false;
-//
-//
-//        long current_time3 = System.currentTimeMillis();
-//        boolean showSpeed = true;
-//        if (System.currentTimeMillis() > current_time3 + 7000)
-//            showSpeed = false;
+    public static void main(String[] args) {
+
+
+
+
 
         //Test newTest = new Test();
         //DrawPanel drawPanel = new DrawPanel(this);
         Test newTest = new Test();
         newTest.go();
-
     }
 
 
@@ -52,14 +39,38 @@ final public class Test {
         frame.setUndecorated(true);
         frame.setBackground(new Color(0, 0, 0, 0));
 
-        drawPanel = new DrawPanel();
+        Handler handler = new Handler();
+        drawPanel = new DrawPanel(handler);
+        drawPanel.setBackground(new Color(0, 0, 0, 0));
 
         frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
         frame.setResizable(false);
         frame.setSize(200, 200);
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
-        //moveIt();
+
+
+        int timer = 5000;
+        long time = System.currentTimeMillis();
+
+
+        handler.setDisplayTurnRight(true);
+
+
+        drawPanel.setHandler(handler);
+//        System.out.println("H: " + drawPanel.getHandler().isDisplayTurnRight());
+//        drawPanel.repaint();
+//        System.out.println("REPAINTED");
+
+        while(System.currentTimeMillis() < time + timer) {
+            if(System.currentTimeMillis() % 2000 == 0) {
+                System.out.println("Waiting for timer");
+            }
+        }
+        System.out.println("should change time npw");
+        handler.setDisplayTurnRight(false);
+        drawPanel.setHandler(handler);
+        drawPanel.repaint();
     }
 }
 
